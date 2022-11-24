@@ -1,30 +1,18 @@
 <script setup>
-import { ref, onErrorCaptured } from 'vue'
-import List_comp from './components/Card/List_comp.vue';
-import article_com from './components/Card/Article.vue/article_com.vue';
-
-const error = ref('')
-
-const reload = () => {
-  window.location.reload()
-}
-
-onErrorCaptured((e) => {
-  console.log('error', e)
-  error.value = e
-  return true
-})
-
 </script>
 
 <template>
-  <div class="middle_box">
-  <Suspense>
-    <template #fallback>loading..</template>
-    <List_comp />
-  </Suspense>
-</div>
+  <header>
+    <nav class="sidebar_left">
+      <ul>
+        <li><router-link to="/"><button>Home</button></router-link></li>
+        <li><router-link to="/Cards"><button>Cards</button></router-link></li>
+        <li><router-link to="/About"><button>About</button></router-link></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <router-view></router-view> 
+  </main>
 </template>
-<style scoped>
 
-</style>
